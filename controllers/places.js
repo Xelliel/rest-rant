@@ -1,7 +1,7 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-router.get('/', (req, res) +> {
-    res.send('GET /places')
-}
+router.get('/', (req, res) => {
+    res.send('GET /places');
+}); // <-- Added closing parenthesis
 
-module.exports = router
+module.exports = router;
