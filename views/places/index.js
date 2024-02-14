@@ -1,25 +1,20 @@
-const React = require('react')
-const Def = require('./default')
+const React = require('react');
+const Def = require('./default');
 
-function index (data) {
-    let placesFormatted = data.places.map((place) => {
-      return (
-        <div>
-          <h2>{place.name}</h2>
-          <img src={place.pic} alt={place.name}/>
-        </div>
-      )
-    })
-    return (
-      <Def>
-          <main>
-              <h1>PLACES INDEX PAGE</h1>
-              {placesFormatted}
-          </main>
-      </Def>
-  )
-  }
-  
-  
+function index(data) {
+    let placesFormatted = data.places.map((place, index) => (
+        React.createElement('div', { key: index },
+            React.createElement('h2', null, place.name),
+            React.createElement('img', { src: place.pic, alt: place.name })
+        )
+    ));
 
-module.exports = index
+    return React.createElement(Def, null,
+        React.createElement('main', null,
+            React.createElement('h1', null, 'PLACES INDEX PAGE'),
+            placesFormatted
+        )
+    );
+}
+
+module.exports = index;

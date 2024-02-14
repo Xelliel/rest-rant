@@ -8,6 +8,7 @@ require('dotenv').config();
 // Set up JSX view engine
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
+app.use(express.static('public'));
 
 // Define routes
 app.use('/places', require('./controllers/places'));
@@ -21,6 +22,8 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
     res.render('error404')
 });
+
+
 
 // Start the server
 const PORT = process.env.PORT || 3000; // Use process.env.PORT if defined, otherwise use port 3000
