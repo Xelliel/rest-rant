@@ -3,19 +3,19 @@ const places = require('../models/places.js')
 
 
 
-router.delete('/:id', (req, res) => {
+router.get('/:id/edit', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
-    res.render('error404')
+      res.render('error404')
   }
   else if (!places[id]) {
-    res.render('error404')
+      res.render('error404')
   }
   else {
-    places.splice(id, 1)
-    res.redirect('/places')
+    res.render('places/edit', { place: places[id] })
   }
 })
+
 
 
 
@@ -76,3 +76,18 @@ app.get('/', (req, res) => {
   
 
 module.exports = router;
+
+const React = require('react')
+const Def = require('../default.jsx')
+
+function edit_form () {
+    return (
+        <Def>
+          <main>
+            <h1>Edit Place</h1>
+          </main>
+        </Def>
+    )
+}
+
+module.exports = edit_form
